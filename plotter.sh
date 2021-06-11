@@ -1,6 +1,6 @@
 #!/bin/bash
 #你的HDD挂载点前缀,如你的硬盘挂在/mnt/farm1,则前缀为farm
-prefix="farm"
+prefix="/mnt/farm"
 #你的HDD数量，挂载点标号需从1开始标号。如 /mnt/farm1, /mnt/farm2 ....
 totalDisk=6
 #你的vCPU数量
@@ -16,7 +16,7 @@ tmp2="/mnt/plot/"
 count=1
 while true
 do
-   dest="/mnt/$prefix$count/"	
+   dest="$prefix$count/"
    space=$(df $dest --output=avail | grep -E '^[0-9]')
    space=$(($space / 1024 / 1024))
    if [ $space -gt 109 ]

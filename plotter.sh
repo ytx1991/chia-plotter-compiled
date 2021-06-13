@@ -22,7 +22,7 @@ do
    if [ $space -gt 109 ]
    then
         echo "Start plotting for farmer_key:$fKey pool_key:$pKey threads:$threads tmp1:$tmp1 tmp2:$tmp2 destination:$dest "
-        ./chia_plot --poolkey=$pKey --farmerkey=$fKey --tmpdir=$tmp1 --tmpdir2=$tmp2 --threads=$threads --buckets=7
+        ./chia_plot --poolkey=$pKey --farmerkey=$fKey --tmpdir=$tmp1 --tmpdir2=$tmp2 --threads=$threads --buckets=8
         echo "Moving plot to $dest ..."
 	cp $tmp1*.plot $dest && rm $tmp1*.plot &
    else

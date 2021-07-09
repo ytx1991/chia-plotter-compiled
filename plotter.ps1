@@ -2,8 +2,8 @@
 $thread = 4;
 #你的农民公钥
 $farmerKey = "aaa";
-#你的矿池公钥
-$poolkey = "bbb";
+#你的NFT合约地址
+$contract = "bbb";
 #第一缓存目录，需要以“\”结尾
 $tmp1="D:\test\";
 #第二缓存目录，需要以“\”结尾,可以与第一个相同
@@ -18,8 +18,8 @@ DO
  $disk = Get-WmiObject Win32_LogicalDisk -ComputerName "localhost" -Filter "DeviceID='$final'" | Select-Object Size,FreeSpace
 
  if ($disk.FreeSpace/1024/1024/1024 -gt 103) {
-  "开始P图, 农民公钥=$farmerKey, 矿池公钥=$poolkey, 第一缓存=$tmp1, 第二缓存=$tmp2, 线程数=$thread, 最终存储目录= $final\";
- .\chia_plot.exe $poolkey $farmerKey $tmp1 $tmp2 $thread 7
+  "开始P图, 农民公钥=$farmerKey, NFT合约=$contract, 第一缓存=$tmp1, 第二缓存=$tmp2, 线程数=$thread, 最终存储目录= $final\";
+ .\chia_plot.exe -c $contract -f $farmerKey -t $tmp1 -2 $tmp2 -r $thread -u 8
  "P图完成，开始复制到存储目录 $($dest[$($count-1)])";
  Start-Job -ScriptBlock{
   param($p1,$p2);
